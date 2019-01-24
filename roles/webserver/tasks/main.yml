@@ -1,0 +1,50 @@
+---
+
+- name: update and upgrade apt packages
+  apt:
+    upgrade: yes
+
+- name: install essential packages
+  apt:
+    update_cache: yes
+    name: ['supervisor', 'python-pip', 'python-setuptools']
+
+- name: install various libraries with pip
+  pip: 
+    name: "{{ item }}"
+  with_items:
+    - flask
+    - flask-restful
+    - jinja2
+
+- name: extract AWS cfn-bootstrap
+  shell: pip install https://s3.amazonaws.com/cloudformation-examples/aws-cfn-bootstrap-latest.tar.gz
+
+- name: ensure hello-world user
+  user:
+    name: hello-world
+    shell: /bin/bash
+
+- name: ensure hello-world directory
+  file:
+    path: /home/hello-world/code
+    state: directory
+    recurse: yes
+    owner: hello-world
+    group: hello-world
+
+- name: copy hello-world from /tmp
+  shell: "cp -R /tmp/hello-world/ /home/hello-world/code/; chown -R hello-world:hello-world /home/hello-world/code/"
+  args:
+    creates: /home/hello-world/code/hello-world
+
+- name: create supervisor config
+  shell: "cp /tmp/hello-world/config/supervisor.conf /etc/supervisor/conf.d/hello-world.conf"
+  args:
+    creates: /etc/supervisor/conf.d/hello-world.conf
+
+- name: reread supervisor
+  command: supervisorctl reread
+
+- name: update supervisor
+  command: supervisorctl update

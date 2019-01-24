@@ -1,0 +1,13 @@
+---
+
+- name: OS Hardening & Patching
+  hosts: all
+  become: yes
+  roles:
+    - 'os-hardening'
+
+- name: Deploy application
+  hosts: all
+  become: yes
+  roles:
+    - 'webserver'

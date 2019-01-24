@@ -1,0 +1,39 @@
+{
+  "variables": {
+    "aws_access_key": "xxx",
+    "aws_secret_key": "xxx"
+  },
+  "builders": [{
+    "type": "amazon-ebs",
+    "access_key": "{{user `aws_access_key`}}",
+    "secret_key": "{{user `aws_secret_key`}}",
+    "region": "us-east-1",
+    "source_ami": "ami-05a36d3b9aa4a17ac",
+    "instance_type": "t2.micro",
+    "ssh_username": "ubuntu",
+    "ami_name": "hello-world {{timestamp}}"
+  }],
+  "provisioners": [
+    {
+      "type": "file",
+      "source": "src",
+      "destination": "/tmp/hello-world"
+    },
+    {
+      "type": "shell",
+      "inline": [
+        "sleep 30",
+        "sudo apt-add-repository ppa:ansible/ansible",
+        "sudo /usr/bin/apt-get update",
+        "sudo /usr/bin/apt-get -y install ansible",
+        "sudo /usr/bin/apt-get -y install git-core"
+      ]
+    },
+    {
+      "type": "ansible-local",
+      "galaxy_file": "requirements.yml",
+      "role_paths": [ "roles/webserver" ],
+      "playbook_file": "provision.yml"
+    }
+  ]
+}

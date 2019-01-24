@@ -1,0 +1,13 @@
+<html>
+<marquee direction="down" width="250" height="250" behavior="alternate">
+  <marquee behavior="alternate">
+    {% if instanceid is defined %}
+      Hello from {{ instanceid }} <!-- undefined for local development -->
+    {% else %}
+      Hello World
+    {% endif %}
+    
+  </marquee>
+</marquee>
+<img src="https://media1.tenor.com/images/e4a6e337022d80fecd4bf1e9e9502c3c/tenor.gif" width="250" height="250">
+</html>
