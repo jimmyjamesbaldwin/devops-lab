@@ -4,7 +4,7 @@ Technical assessment for DevOps candidates.
 
 Nobody asked me to do this but I was bored.
 
-<img src="https://i0.wp.com/www.awsomeblog.com/wp-content/uploads/2014/05/photo.png" width="100"><img src="https://s3.amazonaws.com/hashicorp-marketing-web-assets/brand/Vagrant_VerticalLogo_FullColor.rkvQk0Hax.svg" width="100"><img src="https://www.datocms-assets.com/2885/1506457192-blog-packer-list.svg" width="100"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/2000px-Python-logo-notext.svg.png" width="100">
+<img src="https://i0.wp.com/www.awsomeblog.com/wp-content/uploads/2014/05/photo.png" width="100"><img src="https://s3.amazonaws.com/hashicorp-marketing-web-assets/brand/Vagrant_VerticalLogo_FullColor.rkvQk0Hax.svg" width="80"><img src="https://www.datocms-assets.com/2885/1506457192-blog-packer-list.svg" width="100"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/2000px-Python-logo-notext.svg.png" width="100">
 
 ## Overview
 Summary: Using AWS Cloudformation, automate the deployment of secure, publicly available HA Load-Balanced Web Servers. [More details](https://github.com/StreamCo/devops-lab)
